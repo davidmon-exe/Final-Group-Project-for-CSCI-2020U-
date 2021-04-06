@@ -17,5 +17,13 @@ import javafx.scene.control.*;
  * Controller and main source of code for the File Share Client.
  */
 public class FXMLController {
+    @FXML
+    public void initialize(){
 
+    }
+
+    @FXML
+    public void exitClient(){
+        System.exit(0);
+    }
 }

@@ -1,4 +1,4 @@
-package server;
+package java;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -6,15 +6,18 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-public class Server extends Application {
+public class ServerUI extends Application {
+    public ServerUI(){
+        String[] args = new String[] {""};
+        main(args);
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
         Parent nRoot = FXMLLoader.load(getClass().getResource("server.fxml"));
-        primaryStage.setTitle("Server");
-        Scene mainScene = new Scene(nRoot, 400, 400);
-        primaryStage.setScene(mainScene);
+        primaryStage.setTitle("Server Thing");
+        primaryStage.setScene(new Scene(nRoot,400,600));
         primaryStage.show();
     }
 
@@ -22,3 +25,4 @@ public class Server extends Application {
         launch(args);
     }
 }
+

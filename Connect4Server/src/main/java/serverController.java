@@ -1,4 +1,4 @@
-package server;
+package java;
 import javafx.fxml.FXML;
 import java.util.concurrent.*;
 import javafx.scene.control.TextArea;
