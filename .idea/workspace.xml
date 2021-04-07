@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="00299400-3f78-48a6-ad65-9d9322cb37a1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Connect4Client/src/main/java/org/openjfx/FXMLController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Connect4Client/src/main/java/org/openjfx/FXMLController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connect4Client/src/main/resources/org/openjfx/scene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Connect4Client/src/main/resources/org/openjfx/scene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connect4Server/src/main/java/org/openjfx/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Connect4Server/src/main/java/org/openjfx/MainApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Connect4Server/src/main/resources/org/openjfx/scene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Connect4Server/src/main/resources/org/openjfx/scene.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/Connect4Client">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Connect4Client/src/main/java/org/openjfx/MainApp.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Connect4Client/src/main/java/org/openjfx/FileObject.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Connect4Client/src/main/java/org/openjfx/client.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Connect4Client/src/main/java/org/openjfx/FXMLController.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectId" id="1qlRX8iBatyBOMdgGJx8jyovQuX" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="external.system.task.project.file.to.start" value="$PROJECT_DIR$/Connect4Server" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Connect4Server" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\School\csci2020_Assignments\Final-Group-Project-for-CSCI-2020U-\Connect4Client\src\main\java\org\openjfx" />
+      <recent name="D:\School\csci2020_Assignments\Final-Group-Project-for-CSCI-2020U-\Connect4Server\src\main\java" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.Connect4Client">
+    <configuration name="Connect4Client" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Connect4Client" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--scan --scan" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Connect4Server" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Connect4Server" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--scan --scan" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Gradle.Connect4Client" />
+      <item itemvalue="Gradle.Connect4Server" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="00299400-3f78-48a6-ad65-9d9322cb37a1" name="Default Changelist" comment="" />
+      <created>1617652227104</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1617652227104</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Final_Group_Project_for_CSCI_2020U_$Connect4Server.ic" NAME="Connect4Server Coverage Results" MODIFIED="1617822556325" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

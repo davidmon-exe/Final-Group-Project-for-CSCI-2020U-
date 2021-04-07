@@ -3,7 +3,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane fx:controller="org.openjfx.serverController"
+<GridPane fx:id="gridPane" fx:controller="org.openjfx.serverController"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-    <Button text="Exit" onAction="#exitClient" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+    <AnchorPane prefHeight="200" prefWidth="200" styleClass="anchorPane">
+        <Label text="Server Running" layoutX="60" layoutY="20"/>
+        <Button text="Exit" onAction="#exitClient" layoutX="83" layoutY="40"/>
+    </AnchorPane>
 </GridPane>

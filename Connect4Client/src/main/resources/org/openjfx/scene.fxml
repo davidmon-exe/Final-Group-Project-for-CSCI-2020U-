@@ -3,7 +3,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.FXMLController">
-
-
-</AnchorPane>
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="900" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.FXMLController">
+    <AnchorPane prefHeight="600" prefWidth="900" styleClass="anchorPane">
+        <Button fx:id="drop1" text="Drop" onAction="#exitClient" layoutX="60" layoutY="10"/>
+        <Button fx:id="drop2" text="Drop" onAction="#exitClient" layoutX="180" layoutY="10"/>
+        <Button fx:id="drop3" text="Drop" onAction="#exitClient" layoutX="300" layoutY="10"/>
+        <Button fx:id="drop4" text="Drop" onAction="#exitClient" layoutX="420" layoutY="10"/>
+        <Button fx:id="drop5" text="Drop" onAction="#exitClient" layoutX="540" layoutY="10"/>
+        <Button fx:id="drop6" text="Drop" onAction="#exitClient" layoutX="660" layoutY="10"/>
+        <Button fx:id="drop7" text="Drop" onAction="#exitClient" layoutX="780" layoutY="10"/>
+        <Canvas fx:id="mainCanvas" height="500" width="500" layoutX="0" layoutY="40"></Canvas>
+    </AnchorPane>
+</GridPane>

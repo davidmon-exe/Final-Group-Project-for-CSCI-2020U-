@@ -17,9 +17,13 @@ import javafx.scene.control.*;
  * Controller and main source of code for the File Share Client.
  */
 public class FXMLController {
+    @FXML private Canvas mainCanvas;
+    @FXML private GraphicsContect gc;
+
     @FXML
     public void initialize(){
-
+        gc = mainCanvas.getGraphicsContext2D();
+        gc.fillRect(0,40,500,500);
     }
 
     @FXML
