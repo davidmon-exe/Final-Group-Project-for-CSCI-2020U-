@@ -22,6 +22,8 @@ import javafx.scene.shape.*;
 public class FXMLController {
     @FXML private Canvas mainCanvas;
     @FXML private GraphicsContext gc;
+    private static final int ROWS = 6;
+    private static final int COLUMNS = 7;
 
     @FXML
     public void initialize(){
@@ -33,56 +35,30 @@ public class FXMLController {
         gc.setFill(Color.LIGHTBLUE);
         gc.fillRect(0,40,900,520);
         gc.setFill(Color.WHITE);
-        //first column
-        gc.fillArc(45,55,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(45,135,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(45,215,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(45,295,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(45,375,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(45,455,75,75,0,360,ArcType.ROUND);
-        //second column
-        gc.fillArc(165,55,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(165,135,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(165,215,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(165,295,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(165,375,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(165,455,75,75,0,360,ArcType.ROUND);
-        //third column
-        gc.fillArc(285,55,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(285,135,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(285,215,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(285,295,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(285,375,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(285,455,75,75,0,360,ArcType.ROUND);
-        //fourth column
-        gc.fillArc(405,55,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(405,135,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(405,215,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(405,295,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(405,375,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(405,455,75,75,0,360,ArcType.ROUND);
-        //fifth column
-        gc.fillArc(525,55,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(525,135,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(525,215,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(525,295,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(525,375,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(525,455,75,75,0,360,ArcType.ROUND);
-        //sixth column
-        gc.fillArc(645,55,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(645,135,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(645,215,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(645,295,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(645,375,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(645,455,75,75,0,360,ArcType.ROUND);
-        //seventh column
-        gc.fillArc(765,55,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(765,135,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(765,215,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(765,295,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(765,375,75,75,0,360,ArcType.ROUND);
-        gc.fillArc(765,455,75,75,0,360,ArcType.ROUND);
+
+        final int ROW_INCREMENT = 120;
+        final int COLUMN_INCREMENT = 80;
+
+        for (int i = 0; i < COLUMNS; i++){
+            for (int j = 0; j < ROWS; j++){
+                //fill columns
+                gc.fillArc(45 + (i * ROW_INCREMENT),55 + (j * COLUMN_INCREMENT),75,75,0,360,ArcType.ROUND);
+            }
+        }
+
     }
+    /* TODO:
+        Short:
+            Make a 2D list
+            Lists within one big list more so
+            Attach buttons to lists(?)
+        Long:
+            Make a list for each column, filled with 0s
+            Lists all going into one big list
+            Every time you press a drop button
+            a circle is filled, and in the array where it simulates the board state
+            fill in a 1 or 2 where the circle is located as well
+     */
 
     @FXML
     public void exitClient(){
