@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="00299400-3f78-48a6-ad65-9d9322cb37a1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Connect4Client/src/main/java/org/openjfx/FXMLController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Connect4Client/src/main/java/org/openjfx/FXMLController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Connect4Client/src/main/resources/org/openjfx/scene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Connect4Client/src/main/resources/org/openjfx/scene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Connect4Server/src/main/java/org/openjfx/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Connect4Server/src/main/java/org/openjfx/MainApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Connect4Server/src/main/resources/org/openjfx/scene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Connect4Server/src/main/resources/org/openjfx/scene.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
