@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="00299400-3f78-48a6-ad65-9d9322cb37a1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/Connect4Client/src/main/java/org/openjfx/FXMLController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Connect4Client/src/main/java/org/openjfx/FXMLController.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/Connect4Client/src/main/java/org/openjfx/client.fxml" beforeDir="false" />
+>>>>>>> refs/remotes/origin/main
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,10 +37,14 @@
     <setting file="file://$PROJECT_DIR$/Connect4Client/src/main/java/org/openjfx/FXMLController.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Connect4Client/src/main/java/org/openjfx/MainApp.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Connect4Client/src/main/java/org/openjfx/FileObject.java" root0="FORCE_HIGHLIGHTING" />
+<<<<<<< HEAD
     <setting file="file://$PROJECT_DIR$/Connect4Client/src/main/java/org/openjfx/client.fxml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
+=======
+    <setting file="file://$PROJECT_DIR$/Connect4Client/src/main/java/org/openjfx/FXMLController.java" root0="FORCE_HIGHLIGHTING" />
+>>>>>>> refs/remotes/origin/main
   </component>
   <component name="ProjectId" id="1qlRX8iBatyBOMdgGJx8jyovQuX" />
   <component name="ProjectLevelVcsManager">
