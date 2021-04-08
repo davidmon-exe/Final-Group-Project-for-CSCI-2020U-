@@ -24,20 +24,25 @@ public class FXMLController {
     @FXML private GraphicsContext gc;
     private static final int ROWS = 6;
     private static final int COLUMNS = 7;
+    private static final int ROW_INCREMENT = 120;
+    private static final int COLUMN_INCREMENT = 80;
+
+    //create list
+    List<List> boardStateArray = new ArrayList<>();
+
+    private int turnCounter = 0;
 
     @FXML
     public void initialize(){
         gc = mainCanvas.getGraphicsContext2D();
         drawBoard();
+        createArray();
     }
 
     public void drawBoard(){
         gc.setFill(Color.LIGHTBLUE);
         gc.fillRect(0,40,900,520);
         gc.setFill(Color.WHITE);
-
-        final int ROW_INCREMENT = 120;
-        final int COLUMN_INCREMENT = 80;
 
         for (int i = 0; i < COLUMNS; i++){
             for (int j = 0; j < ROWS; j++){
@@ -47,18 +52,74 @@ public class FXMLController {
         }
 
     }
-    /* TODO:
-        Short:
-            Make a 2D list
-            Lists within one big list more so
-            Attach buttons to lists(?)
-        Long:
-            Make a list for each column, filled with 0s
-            Lists all going into one big list
-            Every time you press a drop button
-            a circle is filled, and in the array where it simulates the board state
-            fill in a 1 or 2 where the circle is located as well
+    /** TODO:
+     *   Short:
+     *       Make a 2D list
+     *       Lists within one big list more so
+     *       Attach buttons to lists(?)
+     *   Long:
+     *       Make a list for each column, filled with 0s
+     *       Lists all going into one big list
+     *       Every time you press a drop button
+     *       a circle is filled, and in the array where it simulates the board state
+     *       fill in a 1 or 2 where the circle is located as well
+     *       To assign values do the first index as the bottom row in the game
      */
+
+    public void createArray(){
+        /** FIXME:
+         *      Change createArray() and it's hard code
+         *      Issue is, trying to make 1 ArrayList,
+         *      then assigning many times with a for loop does not work.
+         *      The reason is because the ID of the ArrayList is still the same.
+         *      So, in dropButtons, changing the value of the ArrayList changes
+         *      all of them, because inherently, they *are* the same list
+         */
+        //give boardStateArray lists
+        List<Integer> temp1 = Arrays.asList(0, 0, 0, 0, 0, 0);
+        List<Integer> temp2 = Arrays.asList(0, 0, 0, 0, 0, 0);
+        List<Integer> temp3 = Arrays.asList(0, 0, 0, 0, 0, 0);
+        List<Integer> temp4 = Arrays.asList(0, 0, 0, 0, 0, 0);
+        List<Integer> temp5 = Arrays.asList(0, 0, 0, 0, 0, 0);
+        List<Integer> temp6 = Arrays.asList(0, 0, 0, 0, 0, 0);
+        List<Integer> temp7 = Arrays.asList(0, 0, 0, 0, 0, 0);
+
+        boardStateArray.add(temp1);
+        boardStateArray.add(temp2);
+        boardStateArray.add(temp3);
+        boardStateArray.add(temp4);
+        boardStateArray.add(temp5);
+        boardStateArray.add(temp6);
+        boardStateArray.add(temp7);
+        System.out.println(boardStateArray);
+    }
+
+    @FXML
+    public void dropButtons(ActionEvent event){
+        //when a drop button is pressed drop it on desired area
+        final int btnId = Integer.parseInt(((Control)event.getSource()).getId());
+        for (int i = 0; i < boardStateArray.size(); i++) {
+            if (i == btnId-1) {
+                System.out.println("Button " + (btnId));
+                System.out.println(boardStateArray.get(i).size());
+                for (int j = 0; j < boardStateArray.get(i).size(); j++) {
+                    if (boardStateArray.get(btnId-1).get(j).equals(0)) {
+                        boardStateArray.get(btnId-1).set(j,(turnCounter % 2) + 1);
+                        if (turnCounter % 2 <= 0) {
+                            gc.setFill(Color.RED);
+                            gc.fillArc(45 + (i * ROW_INCREMENT),455 - (j * COLUMN_INCREMENT),75,75,0,360,ArcType.ROUND);
+                        } else {
+                            gc.setFill(Color.YELLOW);
+                            gc.fillArc(45 + (i * ROW_INCREMENT),455 - (j * COLUMN_INCREMENT),75,75,0,360,ArcType.ROUND);
+                        }
+                        break;
+                    }
+                }
+                System.out.println(boardStateArray);
+            }
+        }
+        turnCounter++;
+    }
 
     @FXML
     public void exitClient(){
