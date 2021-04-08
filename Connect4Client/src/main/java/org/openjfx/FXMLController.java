@@ -121,8 +121,13 @@ public class FXMLController {
         turnCounter++;
     }
 
-    @FXML
-    public void exitClient(){
-        System.exit(0);
+    /*
+     * Takes the arrayList and check all the win conditions
+     * 4 in a row vertically, horizontally or diagonally
+     * Should be called after each button press
+     * If win condition is met, display winning player
+     */
+    public void checkWin(List<List> boardStateArray){
+
     }
 }
