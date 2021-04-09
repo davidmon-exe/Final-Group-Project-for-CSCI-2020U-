@@ -14,11 +14,14 @@ import javafx.scene.control.*;
 import javafx.scene.canvas.*;
 import javafx.scene.paint.*;
 import javafx.scene.shape.*;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
 
 
-/**
- * Controller and main source of code for the File Share Client.
- */
 public class FXMLController {
     @FXML private Canvas mainCanvas;
     @FXML private GraphicsContext gc;
@@ -159,6 +162,7 @@ public class FXMLController {
         }
         if (count >= 4) {
             System.out.println("Player " + player + " won");
+            //win();
             return true;
         } else count = 1;
 
@@ -179,6 +183,7 @@ public class FXMLController {
         }
         if (count >= 4) {
             System.out.println("Player " + player + " won");
+            //win();
             return true;
         } else count = 1;
 
@@ -198,6 +203,7 @@ public class FXMLController {
         }
         if (count >= 4) {
             System.out.println("Player " + player + " won");
+            //win();
             return true;
         } else count = 1;
 
@@ -217,8 +223,31 @@ public class FXMLController {
         }
         if (count >= 4) {
             System.out.println("Player " + player + " won");
+            //win();
             return true;
         } else return false;
-
     }
+
+    //attempt at switching scene to a win screen when a player wins
+    //not working since original scene is set in fxml, don't know a fix for it
+    //the setOnAction also does not work since it won't recognize setOnAction 
+    /*
+    public void win(){
+        GridPane grid = new GridPane();
+        //Button btApp = new Button("Exit");
+        //grid.add(btApp, 0, 2);
+        Label label = new Label("Player has won");
+        grid.add(label, 0, 1);
+        Scene scene = new Scene(grid, 900, 600);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    btApp.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle (ActionEvent actionEvent){
+            System.exit(0);
+        }
+    });
+*/
 }
