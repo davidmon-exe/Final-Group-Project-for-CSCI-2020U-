@@ -52,7 +52,8 @@ public class FXMLController {
         }
 
     }
-    /** TODO:
+    /**
+     * TODO:
      *   Short:
      *       Make a 2D list
      *       Lists within one big list more so
@@ -67,7 +68,8 @@ public class FXMLController {
      */
 
     public void createArray(){
-        /** FIXME:
+        /**
+         * FIXME:
          *      Change createArray() and it's hard code
          *      Issue is, trying to make 1 ArrayList,
          *      then assigning many times with a for loop does not work.
@@ -98,25 +100,35 @@ public class FXMLController {
     public void dropButtons(ActionEvent event){
         //when a drop button is pressed drop it on desired area
         final int btnId = Integer.parseInt(((Control)event.getSource()).getId());
-        for (int i = 0; i < boardStateArray.size(); i++) {
+        boolean hasWon = false;
+        for (int i = 0; i < COLUMNS; i++) {
             if (i == btnId-1) {
                 System.out.println("Button " + (btnId));
-                System.out.println(boardStateArray.get(i).size());
-                for (int j = 0; j < boardStateArray.get(i).size(); j++) {
+                System.out.println(boardStateArray.size());
+                for (int j = 0; j < ROWS; j++) {
                     if (boardStateArray.get(btnId-1).get(j).equals(0)) {
                         boardStateArray.get(btnId-1).set(j,(turnCounter % 2) + 1);
+
+                        // the (turnCounter % 2) + 1 is just seeing what player it is
+                        hasWon = checkWin(j, i, ((turnCounter % 2) + 1));
+
                         if (turnCounter % 2 <= 0) {
                             gc.setFill(Color.RED);
-                            gc.fillArc(45 + (i * ROW_INCREMENT),455 - (j * COLUMN_INCREMENT),75,75,0,360,ArcType.ROUND);
                         } else {
                             gc.setFill(Color.YELLOW);
-                            gc.fillArc(45 + (i * ROW_INCREMENT),455 - (j * COLUMN_INCREMENT),75,75,0,360,ArcType.ROUND);
                         }
+                        gc.fillArc(45 + (i * ROW_INCREMENT),455 - (j * COLUMN_INCREMENT),75,75,0,360,ArcType.ROUND);
                         break;
                     }
                 }
                 System.out.println(boardStateArray);
             }
+        }
+        if (hasWon) {
+            /**
+             * This is if we want to do something like this
+             * Maybe a bit excessive, but this is just in case
+             */
         }
         turnCounter++;
     }
@@ -127,7 +139,86 @@ public class FXMLController {
      * Should be called after each button press
      * If win condition is met, display winning player
      */
-    public void checkWin(List<List> boardStateArray){
+    public boolean checkWin(int row, int col, int player) {
+        /**
+         * Hopefully this can be better implemented but this is a working prototype
+         * Could either clean this one up, or do something approaching from another direction
+         */
+        System.out.println("row is: " + row + "\ncol is: " + col + "\nplayer: " + player);
+        int count = 1;
+        final int connect4 = 4;
+
+
+        //check vertical (checking from top to bottom only)
+        for (int i = 1; i < connect4; i++) {
+            if (row-i >= 0) {
+                if (boardStateArray.get(col).get(row-i).equals(player)) {
+                    count++;
+                }
+            }
+        }
+        if (count >= 4) {
+            System.out.println("Player " + player + " won");
+            return true;
+        } else count = 1;
+
+
+        //check horizontal (all the way left then all the way right)
+        for (int i = 1; i < connect4; i++) {
+            if (col-i >= 0) {
+                if (boardStateArray.get(col-i).get(row).equals(player)) {
+                    count++;
+                }
+            }
+
+            if (col+i <= 6) {
+                if (boardStateArray.get(col+i).get(row).equals(player)) {
+                    count++;
+                }
+            }
+        }
+        if (count >= 4) {
+            System.out.println("Player " + player + " won");
+            return true;
+        } else count = 1;
+
+
+        //check diagonals (gotta check 4 ways, 2 for each for loop)
+        for (int i = 1; i < connect4; i++) {
+            if (col-i >= 0 && row-i >= 0) {
+                if (boardStateArray.get(col-i).get(row-i).equals(player)) {
+                    count++;
+                } else break;
+            } else break;
+            if (col+i >= 0 && row+i >= 0) {
+                if (boardStateArray.get(col+i).get(row+i).equals(player)) {
+                    count++;
+                }
+            }
+        }
+        if (count >= 4) {
+            System.out.println("Player " + player + " won");
+            return true;
+        } else count = 1;
+
+
+        //second diagonal
+        for (int i = 1; i < connect4; i++) {
+            if (col+i >= 0 && row-i >= 0) {
+                if (boardStateArray.get(col+i).get(row-i).equals(player)) {
+                    count++;
+                }
+            } else break;
+            if (col-i >= 0 && row+i >= 0) {
+                if (boardStateArray.get(col-i).get(row+i).equals(player)) {
+                    count++;
+                }
+            }
+        }
+        if (count >= 4) {
+            System.out.println("Player " + player + " won");
+            return true;
+        } else return false;
 
     }
 }
