@@ -1,3 +1,0 @@
-#!/bin/sh
-DIR="${0%/*}"
-"$DIR/java"  -m FileShare.main/org.openjfx.MainApp  "$@"

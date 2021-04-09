@@ -13,9 +13,3 @@ javafx {
 dependencies {
 }
 mainClassName = 'Connect4Client.main/org.openjfx.MainApp'
-jlink {
-    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
-    launcher {
-        name = 'Connect4'
-    }
-}

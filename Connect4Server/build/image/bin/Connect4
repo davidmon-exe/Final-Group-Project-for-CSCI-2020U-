@@ -1,0 +1,3 @@
+#!/bin/sh
+DIR="${0%/*}"
+"$DIR/java"  -m Connect4Server.main/org.openjfx.MainApp  "$@"

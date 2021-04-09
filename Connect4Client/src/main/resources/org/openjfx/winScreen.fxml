@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.WinController">
+    <Label fx:id="winLabel" layoutX="200.0" layoutY="104.0" prefHeight="16.0"
+            AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="104.0" />
+    <Button fx:id="exitButton" text="Exit" layoutX="251.0" layoutY="292.0" onAction="#handleExit"
+            prefHeight="26.0" prefWidth="94.0" AnchorPane.leftAnchor="251.0" AnchorPane.topAnchor="292.0" />
+</AnchorPane>

@@ -9,6 +9,7 @@ import java.util.*;
 import static java.nio.file.StandardCopyOption.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.canvas.*;
@@ -100,7 +101,7 @@ public class FXMLController {
     }
 
     @FXML
-    public void dropButtons(ActionEvent event){
+    public void dropButtons(ActionEvent event) throws IOException {
         //when a drop button is pressed drop it on desired area
         final int btnId = Integer.parseInt(((Control)event.getSource()).getId());
         boolean hasWon = false;
@@ -142,7 +143,7 @@ public class FXMLController {
      * Should be called after each button press
      * If win condition is met, display winning player
      */
-    public boolean checkWin(int row, int col, int player) {
+    public boolean checkWin(int row, int col, int player) throws IOException {
         /**
          * Hopefully this can be better implemented but this is a working prototype
          * Could either clean this one up, or do something approaching from another direction
@@ -162,7 +163,7 @@ public class FXMLController {
         }
         if (count >= 4) {
             System.out.println("Player " + player + " won");
-            //win();
+            win(player);
             return true;
         } else count = 1;
 
@@ -183,7 +184,7 @@ public class FXMLController {
         }
         if (count >= 4) {
             System.out.println("Player " + player + " won");
-            //win();
+            win(player);
             return true;
         } else count = 1;
 
@@ -195,7 +196,7 @@ public class FXMLController {
                     count++;
                 } else break;
             } else break;
-            if (col+i >= 0 && row+i >= 0) {
+            if (col+i <= 6 && row+i <= 5) {
                 if (boardStateArray.get(col+i).get(row+i).equals(player)) {
                     count++;
                 }
@@ -203,7 +204,7 @@ public class FXMLController {
         }
         if (count >= 4) {
             System.out.println("Player " + player + " won");
-            //win();
+            win(player);
             return true;
         } else count = 1;
 
@@ -223,31 +224,26 @@ public class FXMLController {
         }
         if (count >= 4) {
             System.out.println("Player " + player + " won");
-            //win();
+            win(player);
             return true;
         } else return false;
     }
 
-    //attempt at switching scene to a win screen when a player wins
-    //not working since original scene is set in fxml, don't know a fix for it
-    //the setOnAction also does not work since it won't recognize setOnAction 
-    /*
-    public void win(){
-        GridPane grid = new GridPane();
-        //Button btApp = new Button("Exit");
-        //grid.add(btApp, 0, 2);
-        Label label = new Label("Player has won");
-        grid.add(label, 0, 1);
-        Scene scene = new Scene(grid, 900, 600);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+    /**
+     * Cretes a new scene to display who the winner is and to allow the user to exit the system
+     * @param player
+     * @throws IOException
+     */
+    public void win(int player) throws IOException {
+        WinController.setPlayer(player);
+        FXMLLoader loadWinScreen = new FXMLLoader();
+        loadWinScreen.setLocation(getClass().getResource("winScreen.fxml"));
+        Scene winScene = new Scene(loadWinScreen.load(), 500, 400);
+        Stage winStage = new Stage();
+        winStage.setTitle("Winner");
+        winStage.setScene(winScene);
+        winStage.show();
     }
 
-    btApp.setOnAction(new EventHandler<ActionEvent>(){
-            @Override
-            public void handle (ActionEvent actionEvent){
-            System.exit(0);
-        }
-    });
-*/
+
 }
