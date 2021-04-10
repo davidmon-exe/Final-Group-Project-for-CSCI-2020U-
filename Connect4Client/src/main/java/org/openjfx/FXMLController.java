@@ -112,16 +112,15 @@ public class FXMLController {
                 for (int j = 0; j < ROWS; j++) {
                     if (boardStateArray.get(btnId-1).get(j).equals(0)) {
                         boardStateArray.get(btnId-1).set(j,(turnCounter % 2) + 1);
-
                         // the (turnCounter % 2) + 1 is just seeing what player it is
                         hasWon = checkWin(j, i, ((turnCounter % 2) + 1));
-
                         if (turnCounter % 2 <= 0) {
                             gc.setFill(Color.RED);
                         } else {
                             gc.setFill(Color.YELLOW);
                         }
                         gc.fillArc(45 + (i * ROW_INCREMENT),455 - (j * COLUMN_INCREMENT),75,75,0,360,ArcType.ROUND);
+
                         break;
                     }
                 }
@@ -160,6 +159,7 @@ public class FXMLController {
                     count++;
                 }
             }
+            System.out.println("Vertical: " + count);
         }
         if (count >= 4) {
             System.out.println("Player " + player + " won");
@@ -181,6 +181,7 @@ public class FXMLController {
                     count++;
                 }
             }
+            System.out.println("Horizontal: " + count);
         }
         if (count >= 4) {
             System.out.println("Player " + player + " won");
@@ -201,6 +202,7 @@ public class FXMLController {
                     count++;
                 }
             }
+            System.out.println("First Diagonal: " + count);
         }
         if (count >= 4) {
             System.out.println("Player " + player + " won");
@@ -212,15 +214,22 @@ public class FXMLController {
         //second diagonal
         for (int i = 1; i < connect4; i++) {
             if (col+i >= 0 && row-i >= 0) {
+                if (col+i == boardStateArray.size()) {
+                    break;
+                }
                 if (boardStateArray.get(col+i).get(row-i).equals(player)) {
                     count++;
                 }
             } else break;
             if (col-i >= 0 && row+i >= 0) {
+                if (row+i == 6) {
+                    break;
+                }
                 if (boardStateArray.get(col-i).get(row+i).equals(player)) {
                     count++;
                 }
             }
+            System.out.println("Second Diagonal: " + count);
         }
         if (count >= 4) {
             System.out.println("Player " + player + " won");

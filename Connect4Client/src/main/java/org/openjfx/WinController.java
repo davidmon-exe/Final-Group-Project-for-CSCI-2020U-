@@ -10,8 +10,6 @@ import java.text.BreakIterator;
 
 public class WinController {
 
-
-
     @FXML public Label winLabel;
     @FXML public Button exitButton;
 
