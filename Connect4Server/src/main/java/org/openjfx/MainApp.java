@@ -16,6 +16,7 @@ public class MainApp extends Application {
         Scene mainScene = new Scene(nRoot, 200, 200);
         primaryStage.setScene(mainScene);
         primaryStage.show();
+        ServerClient client = new ServerClient();
     }
 
     public static void main(String[] args){
