@@ -1,0 +1,8 @@
+org/openjfx/WinController.java
+ org.openjfx.WinController
+org/openjfx/FXMLController.java
+ org.openjfx.FXMLController
+module-info.java
+ module-info
+org/openjfx/MainApp.java
+ org.openjfx.MainApp

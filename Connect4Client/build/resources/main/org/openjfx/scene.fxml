@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.canvas.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="900" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.FXMLController">
-    <AnchorPane prefHeight="600" prefWidth="900" styleClass="anchorPane">
-        <Button fx:id="1" text="Drop" onAction="#dropButtons" layoutX="60" layoutY="10"/>
-        <Button fx:id="2" text="Drop" onAction="#dropButtons" layoutX="180" layoutY="10"/>
-        <Button fx:id="3" text="Drop" onAction="#dropButtons" layoutX="300" layoutY="10"/>
-        <Button fx:id="4" text="Drop" onAction="#dropButtons" layoutX="420" layoutY="10"/>
-        <Button fx:id="5" text="Drop" onAction="#dropButtons" layoutX="540" layoutY="10"/>
-        <Button fx:id="6" text="Drop" onAction="#dropButtons" layoutX="660" layoutY="10"/>
-        <Button fx:id="7" text="Drop" onAction="#dropButtons" layoutX="780" layoutY="10"/>
-        <Canvas fx:id="mainCanvas" height="570" width="900" layoutX="0" layoutY="40"></Canvas>
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.FXMLController">
+    <AnchorPane prefHeight="700" prefWidth="900" styleClass="anchorPane">
+        <Button fx:id="1" layoutX="60" layoutY="10" onAction="#dropButtons" text="Drop" />
+        <Button fx:id="2" layoutX="180" layoutY="10" onAction="#dropButtons" text="Drop" />
+        <Button fx:id="3" layoutX="300" layoutY="10" onAction="#dropButtons" text="Drop" />
+        <Button fx:id="4" layoutX="420" layoutY="10" onAction="#dropButtons" text="Drop" />
+        <Button fx:id="5" layoutX="540" layoutY="10" onAction="#dropButtons" text="Drop" />
+        <Button fx:id="6" layoutX="660" layoutY="10" onAction="#dropButtons" text="Drop" />
+        <Button fx:id="7" layoutX="780" layoutY="10" onAction="#dropButtons" text="Drop" />
+        <Canvas fx:id="mainCanvas" height="570" layoutX="0" layoutY="40" width="900" />
+
+        <TextField fx:id="nameField" layoutX="350.0" layoutY="650" prefWidth="200" />
+        <Button fx:id="connectButton" layoutX="550" layoutY="650" onAction="#connectionHandler" text="Connect"/>
     </AnchorPane>
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
 </GridPane>
