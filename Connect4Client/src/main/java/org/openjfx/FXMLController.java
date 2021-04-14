@@ -37,50 +37,75 @@ public class FXMLController {
     public boolean isFirst;
     public String opponent;
 
+    /**
+     * Initializes the program with a canvas and array
+     * @throws IOException
+     */
     @FXML
     public void initialize() throws IOException {
-        socket = new Socket("localhost", 11111);
+
         gc = mainCanvas.getGraphicsContext2D();
-        drawBoard();
         createArray();
+        drawBoard();
+
     }
 
+    /**
+     * Connects client to server and link both to same game
+     * @param event when the connect button is pressed
+     * @throws IOException
+     */
     @FXML
     public void connectionHandler(ActionEvent event) throws IOException {
-        try {
-            //while(true){
-            serverOut = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-            serverIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            System.out.println("Connection made.");
-            name = nameField.getText();
-            serverOut.write("CONNECT " + name + "\n");
-            serverOut.flush();
-            reply = serverIn.readLine();
-            isFirst = false;
-
-            if (reply.equals("100")) {
-                isFirst = true;
+        Runnable task = () -> {
+            try {
+                //while (true) {
+                socket = new Socket("localhost", 11111);
+                serverOut = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+                serverIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                serverOut.write("CONNECT "+ nameField.getText());
+                System.out.println("Connection made.");
+                serverOut.write("CONNECT "+ nameField.getText());
+                serverOut.flush();
                 reply = serverIn.readLine();
+                isFirst = false;
+
+                if (reply.equals("100")) {
+                    isFirst = true;
+                    reply = serverIn.readLine();
+                }
+                opponent = reply.substring(4);
+                System.out.println("You have been matched with " + opponent + ".");
+
+
+                if(!isFirst){
+                    System.out.println("Waiting for " + opponent+ "\'s move . . .");
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            opponent = reply.substring(4);
-            System.out.println("You have been matched with " + opponent + ".");
-            fetchBoard();
-
-//                if(!isFirst){
-//                    System.out.println("Waiting for "+opponent+"\'s move...");
-//                }
-//
-//                while(true){
-//                    List<List> input = boardStateArray;
-//                }
-        //}
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        };
+        Thread thread = new Thread(task);
+        thread.start();
     }
 
+    /**
+     * Sends the board to the server as a string
+     * @throws IOException
+     */
+    public void sendBoard() throws IOException {
+        System.out.println("Sending Board");
+        serverOut.write(boardStateArray.toString());
+        serverOut.flush();
+    }
+
+
+
+    /**
+     * Gets the new board state from the server
+     * @throws IOException
+     */
     public void fetchBoard() throws IOException {
         //[[1, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0], [2, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]
         //1000000000001000002000000000002000000000000
@@ -91,12 +116,16 @@ public class FXMLController {
         for (int i = 0; i < COLUMNS; i++) {
             for (int j = 0; j < ROWS; j++) {
                 boardStateArray.get(i).set(j, Character.getNumericValue(input.charAt(count)));
-
                 count++;
             }
         }
+    }
 
-
+    /**
+     * Draws the board based on the boardState ArrayList
+     * Checks if the position is a 0, 1 or 2
+     */
+    public void drawBoard(){
         gc.setFill(Color.LIGHTBLUE);
         gc.fillRect(0,40,900,520);
 
@@ -105,34 +134,24 @@ public class FXMLController {
                 //fill columns
                 if((int)boardStateArray.get(i).get(j) == 0){
                     gc.setFill(Color.WHITE);
-                    gc.fillArc(45 + (i * ROW_INCREMENT),55 + (j * COLUMN_INCREMENT),75,75,0,360,ArcType.ROUND);
+                    gc.fillArc(45 + (i * ROW_INCREMENT),455 - (j * COLUMN_INCREMENT),75,75,0,360,ArcType.ROUND);
                 }
                 else if((int)boardStateArray.get(i).get(j) == 1){
                     gc.setFill(Color.RED);
-                    gc.fillArc(45 + (i * ROW_INCREMENT),55 + (j * COLUMN_INCREMENT),75,75,0,360,ArcType.ROUND);
+                    gc.fillArc(45 + (i * ROW_INCREMENT),455 - (j * COLUMN_INCREMENT),75,75,0,360,ArcType.ROUND);
                 }
                 else if((int)boardStateArray.get(i).get(j) == 2){
                     gc.setFill(Color.YELLOW);
-                    gc.fillArc(45 + (i * ROW_INCREMENT),55 + (j * COLUMN_INCREMENT),75,75,0,360,ArcType.ROUND);
+                    gc.fillArc(45 + (i * ROW_INCREMENT),455 - (j * COLUMN_INCREMENT),75,75,0,360,ArcType.ROUND);
                 }
             }
         }
     }
 
-    public void drawBoard(){
-        gc.setFill(Color.LIGHTBLUE);
-        gc.fillRect(0,40,900,520);
-        gc.setFill(Color.WHITE);
 
-        for (int i = 0; i < COLUMNS; i++){
-            for (int j = 0; j < ROWS; j++){
-                //fill columns
-                gc.fillArc(45 + (i * ROW_INCREMENT),55 + (j * COLUMN_INCREMENT),75,75,0,360,ArcType.ROUND);
-            }
-        }
-    }
-
-
+    /**
+     * Creates Arraylist of 7x6 filled with 0s
+     */
     public void createArray(){
         //give boardStateArray lists
         List<Integer> temp1 = Arrays.asList(0, 0, 0, 0, 0, 0);
@@ -153,6 +172,12 @@ public class FXMLController {
         System.out.println(boardStateArray);
     }
 
+    /**
+     * Prints a circle in the column chosen
+     * base colour off of player turn
+     * @param event  pressing the button
+     * @throws IOException
+     */
     @FXML
     public void dropButtons(ActionEvent event) throws IOException {
         //when a drop button is pressed drop it on desired area
@@ -173,7 +198,7 @@ public class FXMLController {
                             gc.setFill(Color.YELLOW);
                         }
                         gc.fillArc(45 + (i * ROW_INCREMENT),455 - (j * COLUMN_INCREMENT),75,75,0,360,ArcType.ROUND);
-
+                        //sendBoard();
                         break;
                     }
                 }
@@ -184,17 +209,18 @@ public class FXMLController {
         turnCounter++;
     }
 
-    /*
-     * Takes the arrayList and check all the win conditions
-     * 4 in a row vertically, horizontally or diagonally
-     * Should be called after each button press
-     * If win condition is met, display winning player
+    /**
+     * Checks winning moves horizontally, vertically and on all diagonals
+     * Does this by checking the numbers in the positions of the ArrayList
+     * @param player  the player number of piece placed
+     * @param row     rolumn number of piece most recently placed
+     * @param col     row number of piece most recently placed
+     * @throws IOException
      */
     public boolean checkWin(int row, int col, int player) throws IOException {
         System.out.println("row is: " + row + "\ncol is: " + col + "\nplayer: " + player);
         int count = 1;
         final int connect4 = 4;
-
 
         //check vertical (checking from top to bottom only)
         for (int i = 1; i < connect4; i++) {
@@ -283,8 +309,8 @@ public class FXMLController {
     }
 
     /**
-     * Cretes a new scene to display who the winner is and to allow the user to exit the system
-     * @param player
+     * Creates a new scene to display who the winner is and to allow the user to exit the system
+     * @param player  the player number of piece placed
      * @throws IOException
      */
     public void win(int player) throws IOException {
@@ -297,6 +323,4 @@ public class FXMLController {
         winStage.setScene(winScene);
         winStage.show();
     }
-
-
 }

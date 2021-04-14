@@ -12,8 +12,11 @@ public class ServerClient {
     public  static String SERVER_ADDRESS = "localhost";
     public  static int    SERVER_PORT = 11111;
 
+    /**
+     * Sets server address and port
+     * Takes the ArrayList sent and sets board to that new ArrayList
+     */
     public ServerClient() {
-
         try {
             socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
             List<List> board = new ArrayList<List>();

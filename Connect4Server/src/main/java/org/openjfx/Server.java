@@ -5,10 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Server is calling ServerThread to get the boardState from a client.
- */
-
 public class Server {
     protected Socket client1 = null;
     protected Socket client2 = null;
@@ -17,12 +13,20 @@ public class Server {
     protected int numClients = 0;
     protected ArrayList board = new ArrayList();
 
+    //connection info
     public static int SERVER_PORT = 11111;
     public static int MAX_CLIENTS = 2;
 
     public BufferedReader clientInput1=null, clientInput2=null;
     public BufferedWriter clientOutput1=null,clientOutput2=null;
 
+    /**
+     * Accepts connections from both clients that connect
+     * Creats the intial board for the game
+     * Sends the board to both clients
+     * Begins ServerThread for the 2 clients
+     * @throws IOException
+     */
     public Server() {
         try {
             serverSocket = new ServerSocket(SERVER_PORT);
@@ -79,7 +83,7 @@ public class Server {
                     clientOutput2.write(board.toString());
                     clientOutput2.flush();
 
-                    ServerThread handler = new ServerThread(client1, client2, (ArrayList) board);
+                    ServerThread handler = new ServerThread(client1, client2, board);
                     Thread thread = new Thread(handler);
                     thread.start();
                 }
@@ -91,7 +95,7 @@ public class Server {
     }
 
     public static void main(String[] args) {
-        System.out.println(args[0]);
+
         Server app = new Server();
     }
 }
