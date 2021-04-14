@@ -39,31 +39,42 @@ public class FXMLController {
 
     @FXML
     public void initialize() throws IOException {
+        socket = new Socket("localhost", 11111);
         gc = mainCanvas.getGraphicsContext2D();
         drawBoard();
         createArray();
     }
-    public void connectionHandler() throws IOException {
-        try{
-            while(true){
-                socket = new Socket("localhost", 11111);
-                serverOut= new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-                serverIn= new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                System.out.println("Connection made.");
-                name = nameField.getText();
-                serverOut.write("CONNECT " + name + "\n");
-                serverOut.flush();
-                reply = serverIn.readLine();
-                isFirst = false;
 
-                if (reply.equals("100")) {
-                    isFirst = true;
-                    reply = serverIn.readLine();
-                }
-                opponent = reply.substring(4);
-                System.out.println("You have been matched with "+opponent+".");
-                fetchBoard();
+    @FXML
+    public void connectionHandler(ActionEvent event) throws IOException {
+        try {
+            //while(true){
+            serverOut = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+            serverIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            System.out.println("Connection made.");
+            name = nameField.getText();
+            serverOut.write("CONNECT " + name + "\n");
+            serverOut.flush();
+            reply = serverIn.readLine();
+            isFirst = false;
+
+            if (reply.equals("100")) {
+                isFirst = true;
+                reply = serverIn.readLine();
             }
+            opponent = reply.substring(4);
+            System.out.println("You have been matched with " + opponent + ".");
+            fetchBoard();
+
+//                if(!isFirst){
+//                    System.out.println("Waiting for "+opponent+"\'s move...");
+//                }
+//
+//                while(true){
+//                    List<List> input = boardStateArray;
+//                }
+        //}
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -120,14 +131,9 @@ public class FXMLController {
             }
         }
     }
-    /**
-     *
-     *
-     */
+
 
     public void createArray(){
-        /**
-         */
         //give boardStateArray lists
         List<Integer> temp1 = Arrays.asList(0, 0, 0, 0, 0, 0);
         List<Integer> temp2 = Arrays.asList(0, 0, 0, 0, 0, 0);

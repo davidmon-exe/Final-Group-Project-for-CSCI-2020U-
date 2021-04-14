@@ -9,9 +9,9 @@ import java.util.*;
 
 public class ServerThread implements Runnable {
     protected Socket send = null , receive = null;
-    protected ArrayList board = null;
+    protected List<List> board = new ArrayList<>();
 
-    public ServerThread(Socket client1, Socket client2, ArrayList board) {
+    public ServerThread(Socket client1, Socket client2, List<List> board) {
         this.send = client1;
         this.receive = client2;
         this.board = board;
@@ -22,7 +22,7 @@ public class ServerThread implements Runnable {
         BufferedWriter toReceiver = null;
         BufferedReader clientInput = null;
         Socket temp = null;
-        String input = "";
+
 
         try {
             while(true){
@@ -30,7 +30,17 @@ public class ServerThread implements Runnable {
                 toSender = new BufferedWriter(new OutputStreamWriter(send.getOutputStream()));
                 toReceiver = new BufferedWriter(new OutputStreamWriter(receive.getOutputStream()));
                 clientInput = new BufferedReader(new InputStreamReader(send.getInputStream()));
+                String input = clientInput.readLine();
+                input = input.replaceAll("[^0-2]", "");
+                System.out.println(input);
+                int count = 0;
+                for (int i = 0; i < 7; i++) {
+                    for (int j = 0; j < 6; j++) {
+                        board.get(i).set(j, Character.getNumericValue(input.charAt(count)));
 
+                        count++;
+                    }
+                }
                 //checkWin
                 /* if red(1) wins send player 1 wins
                 *  else if yellow(2) wins send player 2 wins
@@ -56,5 +66,6 @@ public class ServerThread implements Runnable {
             e.printStackTrace();
         }
     }
+
 
 }
