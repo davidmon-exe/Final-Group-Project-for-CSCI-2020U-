@@ -12,7 +12,7 @@ and refer to "Comments/Analysis of Why the Program Doesn't Fully Work" for a bet
 explanation of the current partially working program.
 
 
-<img src="image/screenshot.PNG" width="800">
+<img src="image/screenshot.png" width="800">
 
 
 # How To Run
